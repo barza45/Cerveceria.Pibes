@@ -1,0 +1,14 @@
+
+body {
+  background-color: #111;
+   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('../img/inicio/fondo-madera.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  color: #fff;
+}
+.card img {
+  height: 200px;
+  object-fit: cover;
+}

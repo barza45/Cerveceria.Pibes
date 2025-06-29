@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('../img/inicio/fondo-madera.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+}
+
+h1, h2, h3 {
+  text-shadow: 2px 2px 4px #000;
+}
+
+.navbar {
+  background-color: rgba(0,0,0,0.85) !important;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+img {
+  object-fit: cover;
+}
+
+.carousel-item img {
+  height: 500px !important; /* o 400px si querés más cuadrado */
+}
