@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Órdenes - Cervecería Los Pibes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/inicio/62e3913301b94a8effd0e834369d8bb2-ilustracion-de-jarra-de-cerveza.webp" width="40" height="40" class="me-2" alt="Logo" />
+        Cervecería Los Pibes
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+  <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+  <li class="nav-item"><a class="nav-link" href="../cervezas.html">Cervezas</a></li>
+  <li class="nav-item"><a class="nav-link" href="../nosotros.html">Nosotros</a></li>
+  <li class="nav-item"><a class="nav-link" href="../contacto.html">Contacto</a></li>
+  <li class="nav-item"><a class="nav-link active" href="#">Órdenes</a></li>
+</ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <h2 class="mb-4 text-center fade-in">Hacé tu pedido</h2>
+    <div class="row">
+      <aside class="col-md-3 mb-4 fade-in">
+        <h5>Filtrar por</h5>
+        <form id="filtros">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="cerveza" id="filtroCerveza" checked>
+            <label class="form-check-label" for="filtroCerveza">Cervezas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="mani" id="filtroMani" checked>
+            <label class="form-check-label" for="filtroMani">Maní y snacks</label>
+          </div>
+        </form>
+        <hr>
+        <h5>Carrito</h5>
+        <ul id="carrito" class="list-group mb-2"></ul>
+        <p><strong>Total:</strong> $<span id="total">0</span></p>
+        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalResumen" onclick="mostrarResumen()">Confirmar pedido</button>
+      </aside>
+      <section class="col-md-9 fade-in">
+        <div class="row g-4" id="productos">
+          <div class="col-md-4 item cerveza">
+            <div class="card h-100 text-center">
+              <img src="img/cerveza/ipa.jpg" class="card-img-top" alt="IPA">
+              <div class="card-body">
+                <h5 class="card-title">IPA</h5>
+                <p class="card-text">Botella 500ml</p>
+                <p class="fw-bold">$1200</p>
+                <button class="btn btn-warning btn-sm" onclick="agregarAlCarrito('IPA', 1200)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 item cerveza">
+            <div class="card h-100 text-center">
+              <img src="img/cerveza/honey.jpg" class="card-img-top" alt="Honey">
+              <div class="card-body">
+                <h5 class="card-title">Honey Ale</h5>
+                <p class="card-text">Botella 500ml</p>
+                <p class="fw-bold">$1100</p>
+                <button class="btn btn-warning btn-sm" onclick="agregarAlCarrito('Honey Ale', 1100)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 item mani">
+            <div class="card h-100 text-center">
+              <img src="img/otros/olga-nayda-l9aIkfGt1nk-unsplash.jpg" class="card-img-top" alt="Maní">
+              <div class="card-body">
+                <h5 class="card-title">Maní salado</h5>
+                <p class="card-text">Bolsa 150g</p>
+                <p class="fw-bold">$600</p>
+                <button class="btn btn-warning btn-sm" onclick="agregarAlCarrito('Maní salado', 600)">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 item cerveza">
+            <div class="card h-100 text-center">
+              <img src="img/cerveza/pelirroja.jpg" class="card-img-top" alt="Cerveza Pelirroja">
+              <div class="card-body">
+                <h5 class="card-title">Cerveza Pelirroja</h5>
+                <p class="card-text">Botella 500ml</p>
+                <p class="fw-bold">$1600</p>
+                <button class="btn btn-warning btn-sm" onclick="agregarAlCarrito('Cerveza Pelirroja', 1600)">Agregar</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-4 item mani">
+            <div class="card h-100 text-center">
+              <img src="img/otros/picada_tradicional.jpg" class="card-img-top" alt="Picada">
+              <div class="card-body">
+                <h5 class="card-title">Picada Tradicional</h5>
+                <p class="card-text">para 4 personas</p>
+                <p class="fw-bold">$6000</p>
+                <button class="btn btn-warning btn-sm" onclick="agregarAlCarrito('Picada Tradicional', 6000)">Agregar</button>
+              </div>
+            </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal fade" id="modalResumen" tabindex="-1" aria-labelledby="modalResumenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResumenLabel">Resumen del pedido</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="contenidoResumen"></div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Seguir pidiendo</button>
+          <button class="btn btn-warning" onclick="finalizarPedido()">Finalizar pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2025 Cervecería Los Pibes - Matías Barzaghi, Juan Cruz Bernandini, Lucas García Lauman</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const filtros = document.querySelectorAll('#filtros input');
+    filtros.forEach(f => {
+      f.addEventListener('change', () => {
+        const activos = Array.from(filtros).filter(f => f.checked).map(f => f.value);
+        document.querySelectorAll('.item').forEach(item => {
+          const visible = activos.some(clase => item.classList.contains(clase));
+          item.style.display = visible ? 'block' : 'none';
+        });
+      });
+    });
+
+    const carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      renderizarCarrito();
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      renderizarCarrito();
+    }
+
+    function renderizarCarrito() {
+      const lista = document.getElementById('carrito');
+      const total = document.getElementById('total');
+      lista.innerHTML = '';
+      let suma = 0;
+      carrito.forEach((item, index) => {
+        suma += item.precio;
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.innerHTML = `<div>${item.nombre} <span class="text-muted">($${item.precio})</span></div>
+                        <button class="btn btn-sm btn-danger" onclick="eliminarDelCarrito(${index})">x</button>`;
+        lista.appendChild(li);
+      });
+      total.textContent = suma;
+    }
+
+    function mostrarResumen() {
+      const resumen = document.getElementById('contenidoResumen');
+      if (carrito.length === 0) {
+        resumen.innerHTML = '<p class="text-warning">Tu carrito está vacío.</p>';
+        document.querySelector('#modalResumen .btn-warning').style.display = 'none';
+        return;
+      }
+      let total = 0;
+      let html = '<ul class="list-group mb-3">';
+      carrito.forEach(item => {
+        html += `<li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                  ${item.nombre} <span>$${item.precio}</span></li>`;
+        total += item.precio;
+      });
+      html += '</ul><p class="text-end"><strong>Total: $' + total + '</strong></p>';
+      resumen.innerHTML = html;
+      document.querySelector('#modalResumen .btn-warning').style.display = 'inline-block';
+    }
+
+    function finalizarPedido() {
+      carrito.length = 0;
+      renderizarCarrito();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('modalResumen'));
+      modal.hide();
+      setTimeout(() => {
+        alert('¡Gracias por tu pedido! 🍺');
+      }, 200);
+    }
+  </script>
+</body>
+</html>
